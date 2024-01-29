@@ -1,0 +1,23 @@
+﻿<Window x:Class="TP_View.RegisterForm"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TP_View"
+        mc:Ignorable="d"
+        Title="RegisterForm" Height="410.013" Width="444.311">
+    <Canvas HorizontalAlignment="Left" Height="364.129" Margin="8.5,10,0,0" VerticalAlignment="Top" Width="421.811">
+        <Label x:Name="UsernameLabel" Content="Username" Canvas.Left="10" Canvas.Top="29.367" Height="26.969" Width="151.087" FontSize="16" FontFamily="Liberation Sans" VerticalContentAlignment="Center"/>
+        <Label x:Name="PasswordLabel" Content="Password" Canvas.Left="10" Canvas.Top="99.666" Height="26.969" Width="151.087" FontSize="16" FontFamily="Liberation Sans" VerticalContentAlignment="Center"/>
+        <Label x:Name="ConfirmPasswordLabel" Content="Confirm Password" Canvas.Left="10" Canvas.Top="178.965" Height="26.969" Width="151.087" FontSize="16" FontFamily="Liberation Sans" VerticalContentAlignment="Center"/>
+        <Label x:Name="BirthdayLabel" Content="Birthday" Canvas.Left="13.452" Canvas.Top="247.446" Height="26.969" Width="147.635" FontSize="16" FontFamily="Liberation Sans" VerticalContentAlignment="Center"/>
+        <Label Content="Minimum 4 characters, Maximum 20" Canvas.Left="166.087" Canvas.Top="56.336" Width="242.837" Height="39.33" FontFamily="Liberation Sans"/>
+        <Label Content="Minimum 8 characters, at least 1 uppercase, &#xD;&#xA;1 lowercase and 1 number" Canvas.Left="166.087" Canvas.Top="126.635" Width="242.837" Height="39.33" FontFamily="Liberation Sans"/>
+        <TextBox x:Name="UsernameTextBox" Height="26.969" Canvas.Left="166.087" Canvas.Top="29.367" Width="242.837" FontSize="16" FontFamily="Liberation Sans" VerticalContentAlignment="Center" LostKeyboardFocus="OnUsernameLostKeyBoardFocusEvent"/>
+        <PasswordBox x:Name="PasswordBox" Canvas.Left="166.087" Canvas.Top="99.666" Width="242.837" Height="26.969" FontFamily="Liberation Sans" FontSize="16" VerticalContentAlignment="Center" LostKeyboardFocus="OnPasswordLostKeyBoardFocusEvent"/>
+        <PasswordBox x:Name="ConfirmPasswordBox" Canvas.Left="166.087" Canvas.Top="178.965" Width="242.837" Height="26.969" VerticalContentAlignment="Center" FontFamily="Liberation Sans" FontSize="16" LostKeyboardFocus="OnConfirmPasswordLostKeyBoardFocusEvent"/>
+        <DatePicker x:Name="BirthdayPicker" Canvas.Left="166.087" Canvas.Top="247.446" Width="242.837" Height="26.969"/>
+        <Button x:Name="RegisterButton" Content="Register" Canvas.Left="321.816" Canvas.Top="323.071" Width="87.108" Height="31.058" FontFamily="Liberation Sans" FontSize="16" PreviewMouseLeftButtonDown="OnRegisterButtonLeftClickEvent"/>
+        <Button x:Name="BackButton" Content="Back" Canvas.Left="13.452" Canvas.Top="323.071" Width="87.108" Height="31.058" FontFamily="Liberation Sans" FontSize="16" PreviewMouseLeftButtonDown="OnBackButtonLeftClickEvent" RenderTransformOrigin="1.085,0.547"/>
+    </Canvas>
+</Window>

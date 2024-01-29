@@ -1,0 +1,87 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using TP_Model;
+
+namespace TP_DAL
+{
+    public class ConnectionString
+    {
+        public const string connectionString = @"Data Source=751FJW2\SQLEXPRESS;Initial Catalog=DBTP;Integrated Security=True;Connect Timeout=5";
+    }
+
+    public class UserServices
+    {
+        public static bool VerifyLoginPassword(string login, string password)
+        {
+                using (SqlConnection sqlConnection = new SqlConnection(ConnectionString.connectionString))
+                {
+                    sqlConnection.Open();
+                    using (SqlCommand cmd = sqlConnection.CreateCommand())
+                    {
+                        cmd.CommandText = @"SELECT COUNT (*) FROM [User] WHERE [Username] = @Username and [Password]=@Password";
+                        cmd.Parameters.AddWithValue("Username", login);
+                        cmd.Parameters.AddWithValue("Password", password);
+                        return (int)cmd.ExecuteScalar() == 1;
+                    }
+                }
+        }
+
+        public static bool IsNameTaken(User user)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString.connectionString))
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "SELECT COUNT(*) FROM [User] WHERE [Username] = @Username";
+                    cmd.Parameters.AddWithValue("Username", user.Username);
+                    return (int)cmd.ExecuteScalar() == 1;
+                }
+            }
+        }
+
+        public static bool RegisterUser(User user)
+        {
+            using (SqlConnection conn = new SqlConnection(ConnectionString.connectionString))
+            {
+                conn.Open();
+
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+<<<<<<< HEAD
+                    cmd.CommandText = "INSERT INTO [User](Username, Password, Birthday, IsAdmin) VALUES (@Username, @Password, @Birthday, @IsAdmin)";
+=======
+                    cmd.CommandText = "INSERT INTO [User] (Username, Password, Birthday, IsAdmin) VALUES (@Username, @Password, @Birthday, @IsAdmin)";
+>>>>>>> 56c0e02fecd097297bc7f5a779c0b7dfde2e3ccf
+
+                    cmd.Parameters.AddWithValue("Username", user.Username);
+                    cmd.Parameters.AddWithValue("Password", user.Password);
+                    cmd.Parameters.AddWithValue("Birthday", user.Birthday);
+                    cmd.Parameters.AddWithValue("IsAdmin", user.IsAdmin);
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+            }
+        }
+
+        public static Guid GetId(string username)
+        {
+            using (SqlConnection sqlConnection = new SqlConnection(ConnectionString.connectionString))
+            {
+                sqlConnection.Open();
+                using (SqlCommand cmd = sqlConnection.CreateCommand())
+                {
+                    cmd.CommandText = @"SELECT COUNT (*) FROM [User] WHERE [Username] = @Username";
+                    cmd.Parameters.AddWithValue("Username", username);
+                    return (Guid)cmd.ExecuteScalar();
+                }
+            }
+
+        }
+    }
+}
